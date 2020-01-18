@@ -8,16 +8,16 @@ public class UnderlyingTree {
 	
 	private int n;
 	private int maturity;
-	private double PoC_0;
+	private double poc_0;
 	private double sigma;
 	
 	
-	public UnderlyingTree(int n, int t, double poC_0, double sigma) {
+	public UnderlyingTree(int n, int t, double poc_0, double sigma) {
 		super();
 		this.underlyingTree = new double[n+1][n+1];
 		this.n = n;
 		this.maturity = t;
-		PoC_0 = poC_0;
+		this.poc_0 = poc_0;
 		this.sigma = sigma;
 		initTree();
 	}
@@ -39,9 +39,12 @@ public class UnderlyingTree {
 		double up = Math.exp(sigma * Math.sqrt(dt));
 		double down = 1/up; 
 		
+		System.out.println("up is  " + up);
+		System.out.println("poc_0 is  " + poc_0);
+		
 		for (int t = 0; t < n+1; t++) {
 			for (int i = 0; i < t+1; i++) {
-				underlyingTree[t][i] = PoC_0 * (Math.pow(down, i)) * (Math.pow(up, (t-i)));
+				underlyingTree[t][i] = poc_0 * (Math.pow(down, i)) * (Math.pow(up, (t-i)));
 				
 			}
 		}

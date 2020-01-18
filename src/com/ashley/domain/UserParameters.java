@@ -10,7 +10,6 @@ public class UserParameters {
 	private double pop_0;
 	private double aoc; 
 	private double coo; 
-	private double SL; 
 	private RealOption[] realOptions;	
 
 	RealOption oi0 = new RealOption(0, 10000);

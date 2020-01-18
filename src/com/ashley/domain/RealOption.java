@@ -18,11 +18,9 @@ public class RealOption {
 		this.salesLevel = salesLevel;
 	}
 
-
 	public double getGainOrLoss() {
 		return gainOrLoss;
 	}
-
 
 	public void setCost(double cost) {
 		this.gainOrLoss = cost;

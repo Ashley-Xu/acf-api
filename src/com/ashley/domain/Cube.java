@@ -12,6 +12,10 @@ public class Cube {
 	private UnderlyingTree assetPrices;
 	private static UserParameters userParams;
 	private Slice[] cube;
+	public Slice[] getCube() {
+		return cube;
+	}
+
 	private int optionNum;
 	private double dt;
 	private double up;
