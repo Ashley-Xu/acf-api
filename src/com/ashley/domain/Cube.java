@@ -1,5 +1,5 @@
 package com.ashley.domain;
-
+//API
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,10 +51,10 @@ public class Cube {
 	}
 	
 	
-//	private Slice getSlice(int sliceIndex) {
-//		return cube[sliceIndex];
-//		
-//	}
+	private Slice getSlice(int sliceIndex) {
+		return cube[sliceIndex];
+		
+	}
 
 
 	public double startProcessing() {

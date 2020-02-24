@@ -28,21 +28,6 @@ class CubeTest {
 			test = new Cube(userParams, assetPrices);
 			
 		}
-	
-		@Test
-		void computeProfitTest() {
-			double[][] prevSlice = new double [][]{
-				{2147483647, -146261924, 1331794},
-				{2147483647, 156157300, 2413589},
-				{0, 0, 0},
-				{2147483647, -593592699, 2663589},
-				{0, 0, 0},
-			}; 
-			double output = test.computeProfit(0, 0, prevSlice);
-			double expected = -3.2212229705E12;
-			assertEquals(expected, output);
-		}
-		
 		@Test
 		void initCubeTest() {
 		
@@ -63,5 +48,42 @@ class CubeTest {
 		
 			Assert.assertArrayEquals(expected, cubeData);
 		}
+		@Test
+		void startProcessingTest() {
+			
+			double output = test.startProcessing();
+			double expected = 4750000.0;
+			assertEquals(expected, output);
+		}
+		@Test
+		void computeProfitTest() {
+			double[][] prevSlice = new double [][]{
+				{2147483647, -146261924, 1331794},
+				{2147483647, 156157300, 2413589},
+				{0, 0, 0},
+				{2147483647, -593592699, 2663589},
+				{0, 0, 0},
+			}; 
+			double output = test.computeProfit(0, 0, prevSlice);
+			double expected = -3.2212229705E12;
+			assertEquals(expected, output);
+		}
+		
+		@Test
+		void computeDCFTest() {
+			double[][] prevSlice = new double [][]{
+				{2147483647, -146261924, 1331794},
+				{2147483647, 156157300, 2413589},
+				{0, 0, 0},
+				{2147483647, -593592699, 2663589},
+				{0, 0, 0},
+			}; 
+			double output = test.computeDCF(0, 0, prevSlice);
+			
+			double expected = 1.0590006135632353E9;
+			assertEquals(expected, output);
+		}
+		
+
 
 }
