@@ -43,7 +43,7 @@ public class Cube {
 	}
 
 	
-	private void initCube() {
+	public void initCube() {
 		for(int i=0; i< tSize; i++) {
 			Slice slice = new Slice(oSize,iSize);
 			cube[i] = slice;
@@ -51,10 +51,10 @@ public class Cube {
 	}
 	
 	
-	private Slice getSlice(int sliceIndex) {
-		return cube[sliceIndex];
-		
-	}
+//	private Slice getSlice(int sliceIndex) {
+//		return cube[sliceIndex];
+//		
+//	}
 
 
 	public double startProcessing() {
@@ -95,7 +95,9 @@ public class Cube {
 		else {
 			totalProfit = unitProfit * userParams.getRealOptions()[o - optionNum].getSalesLevel();
 		}
+		//System.out.println("The Profit is " + totalProfit);
 		return totalProfit;
+		
 		
 	}
 	private double populateFirstSlice() { // The first slice cannot have the options with assumptions of previous actions, so it's the only slice where oSize = 1 + optionNum;
@@ -110,7 +112,7 @@ public class Cube {
 				firstRow[o] = prevSlice [o][0];
 			}
 		double result = Arrays.stream(firstRow).max().getAsDouble();
-		System.out.println("The result is " + result);
+		//System.out.println("The result is " + result);
 		return result;
 	}
 		
@@ -139,21 +141,21 @@ public class Cube {
 			
 			double maxUp = Arrays.stream(rowUp).max().getAsDouble();
 			double maxDown = Arrays.stream(rowDown).max().getAsDouble();
-			System.out.println(" maxUp is " + maxUp + " and maxDown is " + maxDown);
+			//System.out.println(" maxUp is " + maxUp + " and maxDown is " + maxDown);
 				
 			DCF = Math.pow(Rf, -1) * (p * maxUp + (1-p) * maxDown); // Depending on the probabilities of Up or Down cases, we discount back the cash flow 
-			System.out.println(" DCF if stay current is " + DCF);
+			//System.out.println(" DCF if stay current is " + DCF);
 			
 		}
 		else if (o <= optionNum){ // these options are assuming no previous actions
 			
 			DCF = Math.pow(Rf, -1) * (p * slice [o + optionNum][i] + (1-p) * slice [o + optionNum][i+1]);
-			System.out.println(" DCF assuming no prior actions is " + DCF + " when option is " + o); 
+			//System.out.println(" DCF assuming no prior actions is " + DCF + " when option is " + o); 
 			
 		}else { // these options are assuming already taken actions 
 			
 			DCF = Math.pow(Rf, -1) * (p * slice [o][i] + (1-p) * slice [o] [i+1]);
-			System.out.println(" DCF assuming prior actions is " + DCF + " when option is " + o); 
+			//System.out.println(" DCF assuming prior actions is " + DCF + " when option is " + o); 
 			
 		}
 		return DCF;

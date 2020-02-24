@@ -34,7 +34,7 @@ public class UnderlyingTree {
 		return underlyingTree[index];
 	} 
 
-	private void initTree() {
+	public void initTree() {
 		double dt = maturity/n;
 		double up = Math.exp(sigma * Math.sqrt(dt));
 		double down = 1/up; 
