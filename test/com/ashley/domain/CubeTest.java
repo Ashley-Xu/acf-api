@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 class CubeTest {
 	private static Cube test;
 	private static UserParameters userParams;
-	private static Slice slice;
 
-	
 		@BeforeAll
 		static void setUpBeforeClass() throws Exception {
 			RealOption oi0 = new RealOption(0, 10000);
@@ -25,8 +23,7 @@ class CubeTest {
 			userParams = new UserParameters(2, 2, 1600,0.36, 0.05, 350, 0.15, 100, oIa);
 			UnderlyingTree assetPrices = new UnderlyingTree(2, 2, 1600, 0.36);
 			
-			test = new Cube(userParams, assetPrices);
-			
+			test = Cube.getInstance(userParams, assetPrices);		
 		}
 		@Test
 		void initCubeTest() {

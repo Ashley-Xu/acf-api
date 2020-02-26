@@ -24,7 +24,9 @@ public class Cube {
 	private double Rf;
 	private double p;
 	
-	public Cube(UserParameters userParams, UnderlyingTree assetPrices) {
+	private static Cube firstInstance = null;
+	
+	private Cube(UserParameters userParams, UnderlyingTree assetPrices) {
 		super();
 		this.assetPrices = assetPrices;
 		this.userParams = userParams;
@@ -42,6 +44,12 @@ public class Cube {
 		initCube();
 	}
 
+	public static Cube getInstance(UserParameters userParams, UnderlyingTree assetPrices) {
+		if (firstInstance == null) {
+			firstInstance = new Cube(userParams, assetPrices);
+		}
+		return firstInstance;
+	}
 	
 	public void initCube() {
 		for(int i=0; i< tSize; i++) {

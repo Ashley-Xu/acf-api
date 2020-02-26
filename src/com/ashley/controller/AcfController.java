@@ -5,7 +5,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
 import com.ashley.domain.Cube;
 import com.ashley.domain.RealOption;
 import com.ashley.domain.Slice;
@@ -15,7 +14,6 @@ import com.ashley.util.CubeHelper;
 
 //annotations
 @Path("/acf") // URI
-
 
 public class AcfController {
 
@@ -28,6 +26,7 @@ public class AcfController {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/cr")
+	
 	//public double calculateAcf(@PathParam("n") int n, @PathParam("t") int t, @PathParam("PriceOfCost") double PoC_0, @PathParam("sigma") double sigma, @PathParam("RiskFreeRate") double rf, @PathParam("PriceOfProduct") double PoP_0, @PathParam("AmountOfCommodities") double AoC, @PathParam("CostOfOperations") double CoO, @PathParam("gainOrLoss") double gain) {
 	//int n, int t, double PoC_0, double sigma, double rf, double PoP_0, double AoC, double CoO, double gain
 	public double calculateResult(UserParameters userInput) {
@@ -46,7 +45,7 @@ public class AcfController {
 		userParams = getUserParams(userInput.getN(), userInput.getT(), userInput.getPoc_0(), userInput.getSigma(), userInput.getRf(), userInput.getPop_0(), userInput.getAoc(), userInput.getCoo(), userInput.getRealOptions());
 	
 		UnderlyingTree assetPrices = new UnderlyingTree(userInput.getN(), userInput.getT(), userInput.getPoc_0(), userInput.getSigma()); //(n, t, PoC_0, sigma)
-		Cube cube = new Cube(userParams, assetPrices);		
+		Cube cube = Cube.getInstance(userParams, assetPrices);		
 		
 		double result = cube.startProcessing();
 		System.out.println("The final result is " + result);
@@ -71,7 +70,7 @@ public class AcfController {
 		userParams = getUserParams(userInput.getN(), userInput.getT(), userInput.getPoc_0(), userInput.getSigma(), userInput.getRf(), userInput.getPop_0(), userInput.getAoc(), userInput.getCoo(), userInput.getRealOptions());
 		
 		UnderlyingTree assetPrices = new UnderlyingTree(userInput.getN(), userInput.getT(), userInput.getPoc_0(), userInput.getSigma()); //(n, t, PoC_0, sigma)
-		Cube cube = new Cube(userParams, assetPrices);		
+		Cube cube = Cube.getInstance(userParams, assetPrices);		
 		cube.startProcessing();
 		return cube.getCube();
 	}
